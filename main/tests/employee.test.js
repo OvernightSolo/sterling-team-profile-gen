@@ -13,14 +13,14 @@ describe("Test Group A", () => {
   });
 
   it("sets ID using the employee constructor", () => {
-    const testerNum = 10;
+    const testerNum = 7;
     const emp = new Employee("Scott", testerNum);
     expect(emp.id).toBe(testerNum);
   });
 
   it("sets email using the employee constructor", () => {
     const testerStr = "email@email.com";
-    const emp = new Employee("Scott", 1, testerStr);
+    const emp = new Employee("Scott", 7, testerStr);
     expect(emp.email).toBe(testerStr);
   });
 });
@@ -33,20 +33,20 @@ describe("Test Group B", () => {
   });
 
   it("grabs ID using the getId method", () => {
-    const testerNum = 10;
+    const testerNum = 7;
     const emp = new Employee("Scott", testerNum);
     expect(emp.getId()).toBe(testerNum);
   });
 
   it("grabs email using the getEmail method", () => {
     const testerStr = "email@email.com";
-    const emp = new Employee("Scott", 1, testerStr);
+    const emp = new Employee("Scott", 7, testerStr);
     expect(emp.getEmail()).toBe(testerStr);
   });
 
   it("should return 'Employee'", () => {
     const testerStr = "Employee";
-    const emp = new Employee("Scott", 1, "email@email.com");
+    const emp = new Employee("Scott", 7, "email@email.com");
     expect(emp.getRole()).toBe(testerStr);
   });
 });
