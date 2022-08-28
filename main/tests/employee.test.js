@@ -13,40 +13,40 @@ describe("Test Group A", () => {
   });
 
   it("sets ID using the employee constructor", () => {
-    const testerNum = 7;
-    const emp = new Employee("Scott", testerNum);
-    expect(emp.id).toBe(testerNum);
+    const empId = 7;
+    const emp = new Employee("Scott", empId);
+    expect(emp.id).toBe(empId);
   });
 
   it("sets email using the employee constructor", () => {
-    const testerStr = "email@email.com";
-    const emp = new Employee("Scott", 7, testerStr);
-    expect(emp.email).toBe(testerStr);
+    const empEmail = "email@email.com";
+    const emp = new Employee("Scott", 7, empEmail);
+    expect(emp.email).toBe(empEmail);
   });
 });
 
 describe("Test Group B", () => {
   it("grabs name using the getName method", () => {
-    const testerStr = "Scott";
-    const emp = new Employee(testerStr);
-    expect(emp.getName()).toBe(testerStr);
+    const empName = "Scott";
+    const emp = new Employee(empName);
+    expect(emp.getName()).toBe(empName);
   });
 
   it("grabs ID using the getId method", () => {
-    const testerNum = 7;
-    const emp = new Employee("Scott", testerNum);
-    expect(emp.getId()).toBe(testerNum);
+    const empId = 7;
+    const emp = new Employee("Scott", empId);
+    expect(emp.getId()).toBe(empId);
   });
 
   it("grabs email using the getEmail method", () => {
-    const testerStr = "email@email.com";
-    const emp = new Employee("Scott", 7, testerStr);
-    expect(emp.getEmail()).toBe(testerStr);
+    const empEmail = "email@email.com";
+    const emp = new Employee("Scott", 7, empEmail);
+    expect(emp.getEmail()).toBe(empEmail);
   });
 
   it("should return 'Employee'", () => {
-    const testerStr = "Employee";
+    const employeeTag = "Employee";
     const emp = new Employee("Scott", 7, "email@email.com");
-    expect(emp.getRole()).toBe(testerStr);
+    expect(emp.getRole()).toBe(employeeTag);
   });
 });
