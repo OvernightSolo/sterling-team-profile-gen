@@ -1,73 +1,70 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const fs = require("fs");
+const { writeFile } = require("fs").promises;
 const inquirer = require("inquirer");
-const renderPage = require("./src/template-helper");
+const genHTML = require("./src/genHTML");
 const employees = [];
-const idArr = [];
 
 function questions() {
-  function createManager() {
-    inquirer
-      .prompt([
-        {
-          type: "input",
-          name: "managerName",
-          message: "What is the manager's name?",
-          validate: (answer) => {
-            if (answer === "") {
-              return "Please enter a name";
-            }
-            return true;
-          },
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "managerName",
+        message: "What is the manager's name?",
+        validate: (answer) => {
+          if (answer === "") {
+            return "Please enter a name";
+          }
+          return true;
         },
-        {
-          type: "input",
-          name: "managerId",
-          message: "What is the manager's ID number?",
-          validate: (answer) => {
-            if (answer === "") {
-              return "Please enter an ID.";
-            }
-            return true;
-          },
+      },
+      {
+        type: "input",
+        name: "managerId",
+        message: "What is the manager's ID number?",
+        validate: (answer) => {
+          if (answer === "") {
+            return "Please enter an ID.";
+          }
+          return true;
         },
-        {
-          type: "input",
-          name: "managerEmail",
-          message: "What is the manager's email address?",
-          validate: (answer) => {
-            if (answer === "") {
-              return "Please enter an email address.";
-            }
-            return true;
-          },
+      },
+      {
+        type: "input",
+        name: "managerEmail",
+        message: "What is the manager's email address?",
+        validate: (answer) => {
+          if (answer === "") {
+            return "Please enter an email address.";
+          }
+          return true;
         },
-        {
-          type: "input",
-          name: "managerOfficeNumber",
-          message: "What is the team manager's office number?",
-          validate: (answer) => {
-            if (answer === "") {
-              return "Please enter an office number.";
-            }
-            return true;
-          },
+      },
+      {
+        type: "input",
+        name: "managerOfficeNumber",
+        message: "What is the team manager's office number?",
+        validate: (answer) => {
+          if (answer === "") {
+            return "Please enter an office number.";
+          }
+          return true;
         },
-      ])
-      .then((answers) => {
-        const manager = new Manager(
-          answers.managerName,
-          answers.managerId,
-          answers.managerEmail,
-          answers.managerOfficeNumber
-        );
-        employees.push(manager);
-        idArr.push(answers.managerId);
-        createTeam();
-      });
-  }
+      },
+    ])
+    .then((answers) => {
+      const manager = new Manager(
+        answers.managerName,
+        answers.managerId,
+        answers.managerEmail,
+        answers.managerOfficeNumber
+      );
+      manager.role = manager.getRole(manager);
+      employees.push(manager);
+      createTeam();
+    });
 
   function createTeam() {
     inquirer
@@ -88,7 +85,8 @@ function questions() {
             addIntern();
             break;
           default:
-            avengersAssemble();
+            const newHTML = genHTML(employees);
+            createFile(newHTML);
         }
       });
   }
@@ -148,8 +146,8 @@ function questions() {
           answers.engineerEmail,
           answers.engineerGithub
         );
+        engineer.role = engineer.getRole(engineer);
         employees.push(engineer);
-        idArr.push(answers.engineerId);
         createTeam();
       });
   }
@@ -209,13 +207,15 @@ function questions() {
           answers.internEmail,
           answers.internSchool
         );
+        intern.role = intern.getRole(intern);
         employees.push(intern);
-        idArr.push(answers.internId);
         console.log(answers);
       });
   }
-
-  // I don't know what to do next here.
 }
+
+const createFile = (newHTML) => {
+  writeFile("./dist/index.html", newHTML);
+};
 
 questions();
