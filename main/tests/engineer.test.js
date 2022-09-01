@@ -1,5 +1,6 @@
 const Engineer = require("../lib/Engineer");
 
+// Utilizing test-driven development in the enginner class.
 it("set GitHub account through the constructor", () => {
   const empGithub = "GitHubUser";
   const emp = new Engineer("Scott", 1, "email@email.com", empGithub);

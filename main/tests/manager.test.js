@@ -1,6 +1,7 @@
 const Employee = require("../lib/Employee");
 const Manager = require("../lib/Manager");
 
+// Utilizing test-driven development in the manager class.
 it("sets office number from constructor", () => {
   const officeNumber = 311;
   const emp = new Manager("Scott", 7, "email@email.com", officeNumber);

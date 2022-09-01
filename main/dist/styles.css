@@ -12,9 +12,20 @@ p {
 .name {
   font-size: 20px;
   font-weight: bold;
-  border-bottom: 2px solid whitesmoke;
+  box-shadow: 0px 0px 20px white;
+  border-radius: 3px;
 }
 
 .role {
   font-weight: bold;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  background-color: midnightblue;
+  padding: 3px 5px 6px 5px;
+  color: whitesmoke;
 }

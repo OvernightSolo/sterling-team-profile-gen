@@ -1,3 +1,4 @@
+// importing modules
 const { writeFile } = require("fs").promises;
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
@@ -6,6 +7,7 @@ const Intern = require("./lib/Intern");
 const genHTML = require("./src/genHTML");
 const employees = [];
 
+// If there are no elements in the employees array, then let's initiate the prompts.
 const teamQuestions = (selectData) => {
   if (employees.length === 0) {
     console.log("Let's start with the manager.");
@@ -29,6 +31,7 @@ const teamQuestions = (selectData) => {
         message: "What is their email address?",
       },
     ])
+    // If no elements in the employee array yet, then move on to adding the manager to the array. Otherwise, if we choose to add an engineer, then do that. Otherwise, move on to adding an intern.
     .then((employeeData) => {
       if (employees.length === 0) {
         managerQuestions(employeeData);
@@ -40,6 +43,7 @@ const teamQuestions = (selectData) => {
     });
 };
 
+// Adding manager to array.
 const managerQuestions = (employeeData) => {
   inquirer
     .prompt([
@@ -62,6 +66,7 @@ const managerQuestions = (employeeData) => {
     });
 };
 
+//  Adding engineer to array.
 const engineerQuestions = (employeeData) => {
   inquirer
     .prompt([
@@ -84,6 +89,7 @@ const engineerQuestions = (employeeData) => {
     });
 };
 
+// Adding intern to array.
 const internQuestions = (employeeData) => {
   inquirer
     .prompt([
@@ -106,6 +112,7 @@ const internQuestions = (employeeData) => {
     });
 };
 
+// Option to add more engineers, add more interns, or move on to assemble the team.
 const select = () => {
   inquirer
     .prompt([
@@ -128,9 +135,11 @@ const select = () => {
     });
 };
 
+// Write the responses to an HTML compiler file.
 const createFile = (newHTML) => {
   writeFile("./dist/index.html", newHTML);
   console.log("File has been written");
 };
 
+// Fire the primary function.
 teamQuestions();

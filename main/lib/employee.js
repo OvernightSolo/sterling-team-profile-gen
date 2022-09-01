@@ -1,3 +1,5 @@
+// The parent class that we will fashion the other employee roles from.
+
 class Employee {
   constructor(name, id, email) {
     this.name = name;

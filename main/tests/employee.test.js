@@ -1,5 +1,6 @@
 const Employee = require("../lib/Employee");
 
+// Utilizing test-driven development in the employee class.
 describe("Test Group A", () => {
   it("creates new instance of employee", () => {
     const emp = new Employee();

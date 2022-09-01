@@ -23,7 +23,7 @@ function genHTML(employees) {
                   <p class="name">${employees[0].name}</p>
                   <p class="role">${employees[0].role}</p>
                   <p>Employee ID: ${employees[0].id}</p>
-                  <p>Email: ${employees[0].email}</p>
+                  <p><a href="mailto:${employees[0].email}">Email: ${employees[0].email}</a></p>
                   <p>Office# ${employees[0].officeNumber}</p>
                 </p>
               </div>
@@ -40,8 +40,8 @@ function genHTML(employees) {
                   <p class="name">${employees[1].name}</p>
                   <p class="role">${employees[1].role}</p>
                   <p>Employee ID: ${employees[1].id}</p>
-                  <p>Email: ${employees[1].email}</p>
-                  <p>GitHub: github.com/${employees[1].github}</p>
+                  <p><a href="mailto:${employees[1].email}">Email: ${employees[1].email}</a></p>
+                  <p><a href="http://github.com/${employees[1].github}"><i class="fa-brands fa-github"></i> github.com/${employees[1].github}</a></p>
                 </p>
                 </p>
               </div>
@@ -58,7 +58,7 @@ function genHTML(employees) {
                   <p class="name">${employees[2].name}</p>
                   <p class="role">${employees[2].role}</p>
                   <p>Employee ID: ${employees[2].id}</p>
-                  <p>Email: ${employees[2].email}</p>
+                  <p><a href="mailto:${employees[0].email}">Email: ${employees[2].email}</a></p>
                   <p>Student at ${employees[2].school}</p>
                 </p>
                 </p>
@@ -67,6 +67,7 @@ function genHTML(employees) {
           </div>
         </div>
       </div>
+      <script src="https://kit.fontawesome.com/5111a16a3a.js" crossorigin="anonymous"></script>
     </body>
   </html>
   `;

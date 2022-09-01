@@ -1,5 +1,6 @@
 const Intern = require("../lib/Intern");
 
+// Utilizing test-driven development in the intern class.
 it("should set school using the constructor", () => {
   const school = "Emerson";
   const emp = new Intern("Scott", 7, "email@email.com", school);
